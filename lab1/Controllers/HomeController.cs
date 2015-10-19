@@ -12,7 +12,7 @@ namespace lab1.Controllers
 {
     public class HomeController : Controller
     {
-        private const string FilePath = "~/Server_Content/Database.txt";
+        private const string FilePath = "~/App_Data/Database.txt";
         private IUserRepository _userRepository;
         private ICapchaRepository _capchaRepository;
 

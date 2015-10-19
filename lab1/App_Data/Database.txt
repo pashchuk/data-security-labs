@@ -1,0 +1,1 @@
+{"users":[{"username":"admin","pwd":"admin"},{"username":"user1","pwd":"password"},{"username":"user2","pwd":"password"},{"username":"user3","pwd":"password"}],"funcInfo":{"functionA":2,"functionB":3,"currentX":3}}
