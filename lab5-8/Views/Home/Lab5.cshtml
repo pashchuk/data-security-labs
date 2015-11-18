@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Lab5";
+}
+<h2>Lab 5</h2>
+
+<div class="container" ng-controller="MainController">
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-inline" role="form">
+                <label for="number" class="control-label">Random number</label>
+                <input type="text" class="form-control pull-right" ng-model="num"/>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group pull-right buttons">
+                <div class="btn btn-success" ng-click="getNum()">Get</div>
+                <div class="btn btn-default" ng-click="checkNum()">Check</div>
+            </div>
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="prime in primes">
+            <td>{{prime}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    input {
+        width: 100%;
+    }
+</style>

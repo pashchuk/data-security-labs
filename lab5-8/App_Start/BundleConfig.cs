@@ -26,6 +26,13 @@ namespace lab5_8
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                "~/Scripts/angular.js",
+                "~/assets/js/app.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/lab5").Include(
+                "~/assets/js/lab5.js"));
         }
     }
 }
