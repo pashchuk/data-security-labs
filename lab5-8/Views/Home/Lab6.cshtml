@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Lab6";
+}
+<h2>Lab 5</h2>
+
+<div class="container" ng-controller="MainController">
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-inline" role="form">
+                <label for="number" class="control-label">Random number</label>
+                <input type="text" class="form-control pull-right" maxlength="256" ng-model="num" />
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group pull-right buttons">
+                <div class="btn btn-success" ng-click="getNum()">Get random</div>
+                <div class="btn btn-warning" ng-click="getPrime()">Get prime</div>
+                <div class="btn btn-default" ng-click="checkNum()">Check</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-12 col-md-offset-1">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="a"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="b"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <div class="form-group">
+                <div class="btn btn-default" ng-click="add(a,b)">Plus +</div>
+                <div class="btn btn-default" ng-click="sub(a,b)">Substract -</div>
+                <div class="btn btn-default" ng-click="mul(a,b)">Multiply *</div>
+                <div class="btn btn-default" ng-click="div(a,b)">Divide /</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="c" />
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    input {
+        width: 100%;
+    }
+</style>

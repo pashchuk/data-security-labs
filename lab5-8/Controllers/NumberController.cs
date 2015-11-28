@@ -68,5 +68,34 @@ namespace lab5_8.Controllers
             Debug.WriteLine(result);
             return Json(result.ToString());
         }
+
+        [Route("add"), HttpGet]
+        public IHttpActionResult Add(string a, string b)
+        {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)) return BadRequest();
+            return Json(BigInteger.Add(BigInteger.Parse(a), BigInteger.Parse(b)).ToString());
+        }
+
+        [Route("substract"), HttpGet]
+        public IHttpActionResult Sub(string a, string b)
+        {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)) return BadRequest();
+            return Json(BigInteger.Subtract(BigInteger.Parse(a), BigInteger.Parse(b)).ToString());
+        }
+
+        [Route("multiply"), HttpGet]
+        public IHttpActionResult Mul(string a, string b)
+        {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)) return BadRequest();
+            return Json(BigInteger.Multiply(BigInteger.Parse(a), BigInteger.Parse(b)).ToString());
+        }
+
+        [Route("divide"), HttpGet]
+        public IHttpActionResult Div(string a, string b)
+        {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)) return BadRequest();
+            if (b == "0") return BadRequest("Divide by zero");
+            return Json(BigInteger.Divide(BigInteger.Parse(a), BigInteger.Parse(b)).ToString());
+        }
     }
 }

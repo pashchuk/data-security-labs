@@ -17,5 +17,10 @@ namespace lab5_8.Controllers
         {
             return View();
         }
+
+        public ActionResult Lab6()
+        {
+            return View();
+        }
     }
 }

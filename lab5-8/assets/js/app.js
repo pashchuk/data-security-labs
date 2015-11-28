@@ -1,7 +1,7 @@
 ﻿var app = angular.module('app', []);
 
 app.controller('MainController', function($scope, $http) {
-    $scope.num = '123';
+    $scope.num;
     $scope.getNum = function() {
         $http.get('/api/numbers/get_random')
             .success(function(data) {
@@ -32,6 +32,40 @@ app.controller('MainController', function($scope, $http) {
         $http.get('/api/numbers/get_prime')
             .success(function(data) {
                 $scope.num = data;
+            });
+    };
+
+    // lab 6
+    $scope.a;
+    $scope.b;
+    $scope.c;
+    $scope.add = function(a, b) {
+        $http.get('/api/numbers/add', { params: { a: a, b: b } })
+            .success(function(data) {
+                $scope.c = data;
+            });
+    };
+
+    $scope.sub = function(a, b) {
+        $http.get('/api/numbers/substract', { params: { a: a, b: b } })
+            .success(function(data) {
+                $scope.c = data;
+            });
+    };
+
+    $scope.mul = function(a, b) {
+        $http.get('/api/numbers/multiply', { params: { a: a, b: b } })
+            .success(function(data) {
+                $scope.c = data;
+            });
+    };
+
+    $scope.div = function (a, b) {
+        if (b === '0')
+            $scope.c = 'divide by zero';
+        $http.get('/api/numbers/divide', { params: { a: a, b: b } })
+            .success(function(data) {
+                $scope.c = data;
             });
     };
 });
