@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Web.Http;
 using lab5_8.Helpers;
 
@@ -49,16 +50,23 @@ namespace lab5_8.Controllers
         }
 
         [Route("get_prime"), HttpGet]
-        public IHttpActionResult GetRandomPrime()
+        public async Task<IHttpActionResult> GetRandomPrime()
         {
             var rnd = new System.Security.Cryptography.RNGCryptoServiceProvider();
             var bytes = new byte[16];
-            rnd.GetNonZeroBytes(bytes);
-            var res = new BigInteger(bytes);
-            while (!res.IsProbablePrime(5))
-                res += 1;
-            Debug.WriteLine(res);
-            return Json(res.ToString());
+            var result = await Task.Run(() =>
+            {
+                rnd.GetNonZeroBytes(bytes);
+                var res = new BigInteger(bytes);
+                while (!res.IsProbablePrime(10))
+                {
+                    rnd.GetNonZeroBytes(bytes);
+                    res = new BigInteger(bytes);
+                }
+                return res;
+            });
+            Debug.WriteLine(result);
+            return Json(result.ToString());
         }
     }
 }
