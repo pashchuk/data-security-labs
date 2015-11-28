@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Web.Http;
 using lab5_8.Helpers;
 
@@ -43,6 +46,19 @@ namespace lab5_8.Controllers
                 "361720912810755408215708460645842859722715865206816237944587"
             };
             return primes;
+        }
+
+        [Route("get_prime"), HttpGet]
+        public IHttpActionResult GetRandomPrime()
+        {
+            var rnd = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            var bytes = new byte[16];
+            rnd.GetNonZeroBytes(bytes);
+            var res = new BigInteger(bytes);
+            while (!res.IsProbablePrime(5))
+                res += 1;
+            Debug.WriteLine(res);
+            return Json(res.ToString());
         }
     }
 }

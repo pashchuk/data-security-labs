@@ -27,4 +27,11 @@ app.controller('MainController', function($scope, $http) {
             else alert('Not prime');
         });
     };
+
+    $scope.getPrime = function() {
+        $http.get('/api/numbers/get_prime')
+            .success(function(data) {
+                $scope.num = data;
+            });
+    };
 });
